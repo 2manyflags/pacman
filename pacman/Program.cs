@@ -12,24 +12,26 @@ namespace pacman
         static void Main()
         {
             char [,] map = new char[20,30];
-            int counter=0;
-            String line;
-            try
+            char ch;
+            int tchar = 0;
+            int y=0;
+            int x = 0;
+            StreamReader reader;
+            reader = new StreamReader("C:\\Users\\DSU\\source\\repos\\map.txt");
+            while (!reader.EndOfStream)
             {
-                StreamReader sr = new StreamReader("C:\\Users\\DSU\\source\\repos\\map.txt");
-                line = sr.ReadLine();
-                while (line != null)
+                ch = (char)reader.Read();
+                Console.Write(ch);
+                y++;
+                if (y==30)
                 {
-                    Console.WriteLine(line);
-                    map[counter,0] = line.Split(',').ToArray();
-                    line = sr.ReadLine();
+                    x++;
+                    y = 0;
                 }
-                sr.Close();
+                map[x, y] = ch;
+                tchar++;
             }
-            finally
-            {
-                Console.WriteLine("File read successfully");
-            }
+            reader.Close();
             Console.Read();
         }
     }
