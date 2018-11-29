@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace pacman
 {
-    class User
+    class User : Entity
     {
-
+        public override int move()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

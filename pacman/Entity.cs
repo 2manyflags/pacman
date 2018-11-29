@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace pacman
 {
-    class Ghost4 : Entity
+    abstract class Entity
     {
-        public override int move()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract int move();
     }
 }
