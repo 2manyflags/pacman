@@ -8,7 +8,15 @@ namespace pacman
 {
     class Ghost4 : Entity
     {
-        public override int move()
+        public override char move()
+        {
+            throw new NotImplementedException();
+        }
+        public override bool isalive()
+        {
+            throw new NotImplementedException();
+        }
+        public override void kill()
         {
             throw new NotImplementedException();
         }

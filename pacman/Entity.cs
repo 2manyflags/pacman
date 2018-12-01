@@ -8,6 +8,8 @@ namespace pacman
 {
     abstract class Entity
     {
-        public abstract int move();
+        public abstract char move();
+        public abstract bool isalive();
+        public abstract void kill();
     }
 }

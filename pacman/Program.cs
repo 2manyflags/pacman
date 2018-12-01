@@ -34,6 +34,11 @@ namespace pacman
                 }
             }
             reader.Close();
+            User user = new User();
+            Ghost1 ghost1 = new Ghost1();
+            Ghost2 ghost2 = new Ghost2();
+            Ghost3 ghost3 = new Ghost3();
+            Ghost4 ghost4 = new Ghost4();
             Console.Write("        Welcome to\n");
             Console.Write("     Ethan Masching's\n");
             Console.Write("         game of\n");
@@ -42,45 +47,104 @@ namespace pacman
             Console.Write("     Press P to exit\n");
             int hor = 1;
             int ver = 1;
+            int ghhor = 4;
+            int ghver = 4;
+            char ghmove;
             var key= Console.ReadKey();
             Console.Write("\n\n\n\n\n\n\n\n");
             map[hor, ver] = 'O';
+            map[ghhor, ghver] = '@';
             while (key.Key != ConsoleKey.P)
             {
-                if (key.Key == ConsoleKey.W)
+                if (user.isalive() == true)
                 {
-                    if (map[hor-1, ver]==' ')
+                    if (key.Key == ConsoleKey.W)
                     {
-                        map[hor, ver] = ' ';
-                        map[hor-1, ver] = 'O';
-                        hor--;
+                        if (map[hor - 1, ver] != '#')
+                        {
+                            map[hor, ver] = ' ';
+                            map[hor - 1, ver] = 'O';
+                            hor--;
+                        }
+                    }
+                    else if (key.Key == ConsoleKey.S)
+                    {
+                        if (map[hor + 1, ver] != '#')
+                        {
+                            map[hor, ver] = ' ';
+                            map[hor + 1, ver] = 'O';
+                            hor++;
+                        }
+                    }
+                    else if (key.Key == ConsoleKey.A)
+                    {
+                        if (map[hor, ver - 1] != '#')
+                        {
+                            map[hor, ver] = ' ';
+                            map[hor, ver - 1] = 'O';
+                            ver--;
+                        }
+                    }
+                    else if (key.Key == ConsoleKey.D)
+                    {
+                        if (map[hor, ver + 1] != '#')
+                        {
+                            map[hor, ver] = ' ';
+                            map[hor, ver + 1] = 'O';
+                            ver++;
+                        }
                     }
                 }
-                else if (key.Key == ConsoleKey.S)
+                else
                 {
-                    if (map[hor+1, ver]==' ')
-                    {
-                        map[hor, ver] = ' ';
-                        map[hor+1, ver] = 'O';
-                        hor++;
-                    }
+                    break;
                 }
-                else if (key.Key == ConsoleKey.A)
+                if (ghost1.isalive() == true )
                 {
-                    if (map[hor, ver-1] == ' ')
+                    ghmove = ghost1.move();
+                    if (ghmove == 'W')
                     {
-                        map[hor, ver] = ' ';
-                        map[hor, ver-1] = 'O';
-                        ver--;
+                        if (map[ghhor - 1, ghver] != '#')
+                        {
+                            if (map[ghhor - 1, ghver] == 'O')
+                                user.kill();
+                            map[ghhor, ghver] = ' ';
+                            map[ghhor - 1, ghver] = '@';
+                            ghhor--;
+                        }
                     }
-                }
-                else if (key.Key == ConsoleKey.D)
-                {
-                    if (map[hor, ver+1] == ' ')
+                    else if (ghmove == 'S')
                     {
-                        map[hor, ver] = ' ';
-                        map[hor, ver+1] = 'O';
-                        ver++;
+                        if (map[ghhor + 1, ghver] != '#')
+                        {
+                            if (map[ghhor + 1, ghver] == 'O')
+                                user.kill();
+                            map[ghhor, ghver] = ' ';
+                            map[ghhor + 1, ghver] = '@';
+                            ghhor++;
+                        }
+                    }
+                    else if (ghmove == 'D')
+                    {
+                        if (map[ghhor, ghver + 1] != '#')
+                        {
+                            if (map[ghhor, ghver + 1] == 'O')
+                                user.kill();
+                            map[ghhor, ghver] = ' ';
+                            map[ghhor, ghver + 1] = '@';
+                            ghver++;
+                        }
+                    }
+                    else
+                    {
+                        if (map[ghhor, ghver - 1] != '#')
+                        {
+                            if (map[ghhor, ghver -1] == 'O')
+                                user.kill();
+                            map[ghhor, ghver] = ' ';
+                            map[ghhor, ghver - 1] = '@';
+                            ghver--;
+                        }
                     }
                 }
                 for (x = 0; x < 20; x++)
@@ -91,6 +155,8 @@ namespace pacman
                     }
                     Console.Write("\n");
                 }
+                if (user.isalive() == false)
+                    Console.Write("Sorry, you've died. Game Over");
                 key = Console.ReadKey();
                 Console.Write("\n\n\n\n\n\n\n\n\n");
             }

@@ -8,9 +8,21 @@ namespace pacman
 {
     class User : Entity
     {
-        public override int move()
+        int health = 1;
+        public override char move()
         {
             throw new NotImplementedException();
+        }
+        public override bool isalive()
+        {
+            if (health == 0)
+                return false;
+            else
+                return true;
+        }
+        public override void kill()
+        {
+            health = 0;
         }
     }
 }

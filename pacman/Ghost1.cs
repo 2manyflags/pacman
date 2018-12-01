@@ -8,9 +8,33 @@ namespace pacman
 {
     class Ghost1 : Entity
     {
-        public override int move()
+        char dir = 'W';
+        Random rand;
+        int direction;
+        int health=1;
+        public override char move()
         {
-            return 10;
+            rand = new Random();
+            direction = rand.Next(1,5);
+            if (direction == 1)
+                return 'D';
+            else if (direction == 2)
+                return 'S';
+            else if (direction == 3)
+                return 'A';
+            else
+                return 'W';
+        }
+        public override void kill()
+        {
+            health = 0;
+        }
+        public override bool isalive()
+        {
+            if (health == 0)
+                return false;
+            else
+                return true;
         }
     }
 }
