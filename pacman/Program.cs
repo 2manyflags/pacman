@@ -47,13 +47,23 @@ namespace pacman
             Console.Write("     Press P to exit\n");
             int hor = 1;
             int ver = 1;
-            int ghhor = 4;
-            int ghver = 4;
+            int ghhor1 = 4;
+            int ghver1 = 4;
+            int ghhor2 = 10;
+            int ghver2 = 12;
+            int ghhor3 = 2;
+            int ghver3 = 6;
+            int ghhor4 = 8;
+            int ghver4 = 22;
+            int score = 0;
             char ghmove;
             var key= Console.ReadKey();
             Console.Write("\n\n\n\n\n\n\n\n");
             map[hor, ver] = 'O';
-            map[ghhor, ghver] = '@';
+            map[ghhor1, ghver1] = '@';
+            map[ghhor2, ghver2] = '@';
+            map[ghhor3, ghver3] = '@';
+            map[ghhor4, ghver4] = '@';
             while (key.Key != ConsoleKey.P)
             {
                 if (user.isalive() == true)
@@ -104,49 +114,232 @@ namespace pacman
                     ghmove = ghost1.move();
                     if (ghmove == 'W')
                     {
-                        if (map[ghhor - 1, ghver] != '#')
+                        if (map[ghhor1 - 1, ghver1] != '#')
                         {
-                            if (map[ghhor - 1, ghver] == 'O')
+                            if (map[ghhor1 - 1, ghver1] == 'O')
                                 user.kill();
-                            map[ghhor, ghver] = ' ';
-                            map[ghhor - 1, ghver] = '@';
-                            ghhor--;
+                            if (map[ghhor1, ghver1]!='O' && map[ghhor1, ghver1] != ' ')
+                                map[ghhor1, ghver1] = '-';
+                            map[ghhor1 - 1, ghver1] = '@';
+                            ghhor1--;
                         }
                     }
                     else if (ghmove == 'S')
                     {
-                        if (map[ghhor + 1, ghver] != '#')
+                        if (map[ghhor1 + 1, ghver1] != '#')
                         {
-                            if (map[ghhor + 1, ghver] == 'O')
+                            if (map[ghhor1 + 1, ghver1] == 'O')
                                 user.kill();
-                            map[ghhor, ghver] = ' ';
-                            map[ghhor + 1, ghver] = '@';
-                            ghhor++;
+                            if (map[ghhor1, ghver1] != 'O' && map[ghhor1, ghver1] != ' ')
+                                map[ghhor1, ghver1] = '-';
+                            map[ghhor1 + 1, ghver1] = '@';
+                            ghhor1++;
                         }
                     }
                     else if (ghmove == 'D')
                     {
-                        if (map[ghhor, ghver + 1] != '#')
+                        if (map[ghhor1, ghver1 + 1] != '#')
                         {
-                            if (map[ghhor, ghver + 1] == 'O')
+                            if (map[ghhor1, ghver1 + 1] == 'O')
                                 user.kill();
-                            map[ghhor, ghver] = ' ';
-                            map[ghhor, ghver + 1] = '@';
-                            ghver++;
+                            if (map[ghhor1, ghver1] != 'O' && map[ghhor1, ghver1] != ' ')
+                                map[ghhor1, ghver1] = '-';
+                            map[ghhor1, ghver1 + 1] = '@';
+                            ghver1++;
                         }
                     }
                     else
                     {
-                        if (map[ghhor, ghver - 1] != '#')
+                        if (map[ghhor1, ghver1 - 1] != '#')
                         {
-                            if (map[ghhor, ghver -1] == 'O')
+                            if (map[ghhor1, ghver1 -1] == 'O')
                                 user.kill();
-                            map[ghhor, ghver] = ' ';
-                            map[ghhor, ghver - 1] = '@';
-                            ghver--;
+                            if (map[ghhor1, ghver1] != 'O' && map[ghhor1, ghver1] != ' ')
+                                map[ghhor1, ghver1] = '-';
+                            map[ghhor1, ghver1 - 1] = '@';
+                            ghver1--;
                         }
                     }
                 }
+                if (ghost2.isalive() == true)
+                {
+                    ghmove = ghost2.move();
+                    if (ghmove == 'W')
+                    {
+                        if (map[ghhor2 - 1, ghver2] != '#')
+                        {
+                            if (map[ghhor2 - 1, ghver2] == 'O')
+                                user.kill();
+                            if (map[ghhor2, ghver2] != 'O' && map[ghhor2, ghver2] != ' ')
+                                map[ghhor2, ghver2] = '-';
+                            map[ghhor2 - 1, ghver2] = '@';
+                            ghhor2--;
+                        }
+                    }
+                    else if (ghmove == 'S')
+                    {
+                        if (map[ghhor2 + 1, ghver2] != '#')
+                        {
+                            if (map[ghhor2 + 1, ghver2] == 'O')
+                                user.kill();
+                            if (map[ghhor2, ghver2] != 'O' && map[ghhor2, ghver2] != ' ')
+                                map[ghhor2, ghver2] = '-';
+                            map[ghhor2 + 1, ghver2] = '@';
+                            ghhor2++;
+                        }
+                    }
+                    else if (ghmove == 'D')
+                    {
+                        if (map[ghhor2, ghver2 + 1] != '#')
+                        {
+                            if (map[ghhor2, ghver2 + 1] == 'O')
+                                user.kill();
+                            if (map[ghhor2, ghver2] != 'O' && map[ghhor2, ghver2] != ' ')
+                                map[ghhor2, ghver2] = '-';
+                            map[ghhor2, ghver2 + 1] = '@';
+                            ghver2++;
+                        }
+                    }
+                    else
+                    {
+                        if (map[ghhor2, ghver2 - 1] != '#')
+                        {
+                            if (map[ghhor2, ghver2 - 1] == 'O')
+                                user.kill();
+                            if (map[ghhor2, ghver2] != 'O' && map[ghhor2, ghver2] != ' ')
+                                map[ghhor2, ghver2] = '-';
+                            map[ghhor2, ghver2 - 1] = '@';
+                            ghver2--;
+                        }
+                    }
+                }
+                if (ghost3.isalive() == true)
+                {
+                    ghmove = ghost3.move();
+                    if (ghmove == 'W')
+                    {
+                        if (map[ghhor3 - 1, ghver3] != '#')
+                        {
+                            if (map[ghhor3 - 1, ghver3] == 'O')
+                                user.kill();
+                            if (map[ghhor3, ghver3] != 'O' && map[ghhor3, ghver3] != ' ')
+                                map[ghhor3, ghver3] = '-';
+                            map[ghhor3 - 1, ghver3] = '@';
+                            ghhor3--;
+                        }
+                    }
+                    else if (ghmove == 'S')
+                    {
+                        if (map[ghhor3 + 1, ghver3] != '#')
+                        {
+                            if (map[ghhor3 + 1, ghver3] == 'O')
+                                user.kill();
+                            if (map[ghhor3, ghver3] != 'O' && map[ghhor3, ghver3] != ' ')
+                                map[ghhor3, ghver3] = '-';
+                            map[ghhor3 + 1, ghver3] = '@';
+                            ghhor3++;
+                        }
+                    }
+                    else if (ghmove == 'D')
+                    {
+                        if (map[ghhor3, ghver3 + 1] != '#')
+                        {
+                            if (map[ghhor3, ghver3 + 1] == 'O')
+                                user.kill();
+                            if (map[ghhor3, ghver3] != 'O' && map[ghhor3, ghver3] != ' ')
+                                map[ghhor3, ghver3] = '-';
+                            map[ghhor3, ghver3 + 1] = '@';
+                            ghver3++;
+                        }
+                    }
+                    else
+                    {
+                        if (map[ghhor3, ghver3 - 1] != '#')
+                        {
+                            if (map[ghhor3, ghver3 - 1] == 'O')
+                                user.kill();
+                            if (map[ghhor3, ghver3] != 'O' && map[ghhor3, ghver3] != ' ')
+                                map[ghhor3, ghver3] = '-';
+                            map[ghhor3, ghver3 - 1] = '@';
+                            ghver3--;
+                        }
+                    }
+                }
+                if (ghost4.isalive() == true)
+                {
+                    ghmove = ghost4.move();
+                    if (ghmove == 'W')
+                    {
+                        if (map[ghhor4 - 1, ghver4] != '#')
+                        {
+                            if (map[ghhor4 - 1, ghver4] == 'O')
+                                user.kill();
+                            if (map[ghhor4, ghver4] != 'O' && map[ghhor4, ghver4] != ' ')
+                                map[ghhor4, ghver4] = '-';
+                            map[ghhor4 - 1, ghver4] = '@';
+                            ghhor4--;
+                        }
+                    }
+                    else if (ghmove == 'S')
+                    {
+                        if (map[ghhor4 + 1, ghver4] != '#')
+                        {
+                            if (map[ghhor4 + 1, ghver4] == 'O')
+                                user.kill();
+                            if (map[ghhor4, ghver4] != 'O' && map[ghhor4, ghver4] != ' ')
+                                map[ghhor4, ghver4] = '-';
+                            map[ghhor4 + 1, ghver4] = '@';
+                            ghhor4++;
+                        }
+                    }
+                    else if (ghmove == 'D')
+                    {
+                        if (map[ghhor4, ghver4 + 1] != '#')
+                        {
+                            if (map[ghhor4, ghver4 + 1] == 'O')
+                                user.kill();
+                            if (map[ghhor4, ghver4] != 'O' && map[ghhor4, ghver4] != ' ')
+                                map[ghhor4, ghver4] = '-';
+                            map[ghhor4, ghver4 + 1] = '@';
+                            ghver4++;
+                        }
+                    }
+                    else
+                    {
+                        if (map[ghhor4, ghver4 - 1] != '#')
+                        {
+                            if (map[ghhor4, ghver4 - 1] == 'O')
+                                user.kill();
+                            if (map[ghhor4, ghver4] != 'O' && map[ghhor4, ghver4] != ' ')
+                                map[ghhor4, ghver4] = '-';
+                            map[ghhor4, ghver4 - 1] = '@';
+                            ghver4--;
+                        }
+                    }
+                }
+                if (hor == ghhor1 && ver == ghver1)
+                {
+                    user.kill();
+                    map[hor, ver] = '@';
+                }
+                if (hor == ghhor2 && ver == ghver2)
+                {
+                    user.kill();
+                    map[hor, ver] = '@';
+                }
+                if (hor == ghhor3 && ver == ghver3)
+                {
+                    user.kill();
+                    map[hor, ver] = '@';
+                }
+                if (hor == ghhor4 && ver == ghver4)
+                {
+                    user.kill();
+                    map[hor, ver] = '@';
+                }
+                Console.Write("Score: ");
+                Console.Write(score);
+                Console.Write("\n");
                 for (x = 0; x < 20; x++)
                 {
                     for (y = 0; y < 30; y++)
@@ -158,7 +351,7 @@ namespace pacman
                 if (user.isalive() == false)
                     Console.Write("Sorry, you've died. Game Over");
                 key = Console.ReadKey();
-                Console.Write("\n\n\n\n\n\n\n\n\n");
+                Console.Write("\n\n\n\n\n\n\n\n");
             }
         }
     }
