@@ -56,6 +56,10 @@ namespace pacman
             int ghhor4 = 8;
             int ghver4 = 22;
             int score = 0;
+            bool onstar1 = false;
+            bool onstar2 = false;
+            bool onstar3 = false;
+            bool onstar4 = false;
             char ghmove;
             var key= Console.ReadKey();
             Console.Write("\n\n\n\n\n\n\n\n");
@@ -72,7 +76,9 @@ namespace pacman
                     {
                         if (map[hor - 1, ver] != '#')
                         {
-                            map[hor, ver] = ' ';
+                            if (map[hor, ver] == ' ')
+                                score=score+1;
+                            map[hor, ver] = '*';
                             map[hor - 1, ver] = 'O';
                             hor--;
                         }
@@ -81,7 +87,9 @@ namespace pacman
                     {
                         if (map[hor + 1, ver] != '#')
                         {
-                            map[hor, ver] = ' ';
+                            if (map[hor, ver] == ' ')
+                                score=score+1;
+                            map[hor, ver] = '*';
                             map[hor + 1, ver] = 'O';
                             hor++;
                         }
@@ -90,7 +98,9 @@ namespace pacman
                     {
                         if (map[hor, ver - 1] != '#')
                         {
-                            map[hor, ver] = ' ';
+                            if (map[hor, ver] == ' ')
+                                score=score+1;
+                            map[hor, ver] = '*';
                             map[hor, ver - 1] = 'O';
                             ver--;
                         }
@@ -99,7 +109,9 @@ namespace pacman
                     {
                         if (map[hor, ver + 1] != '#')
                         {
-                            map[hor, ver] = ' ';
+                            if (map[hor, ver] == ' ')
+                                score=score+1;
+                            map[hor, ver] = '*';
                             map[hor, ver + 1] = 'O';
                             ver++;
                         }
@@ -118,8 +130,14 @@ namespace pacman
                         {
                             if (map[ghhor1 - 1, ghver1] == 'O')
                                 user.kill();
-                            if (map[ghhor1, ghver1]!='O' && map[ghhor1, ghver1] != ' ')
-                                map[ghhor1, ghver1] = '-';
+                            if (onstar1==false)
+                                map[ghhor1, ghver1] = ' ';
+                            else
+                                map[ghhor1, ghver1] = '*';
+                            if (map[ghhor1 - 1, ghver1] == '*')
+                                onstar1 = true;
+                            else
+                                onstar1 = false;
                             map[ghhor1 - 1, ghver1] = '@';
                             ghhor1--;
                         }
@@ -130,8 +148,14 @@ namespace pacman
                         {
                             if (map[ghhor1 + 1, ghver1] == 'O')
                                 user.kill();
-                            if (map[ghhor1, ghver1] != 'O' && map[ghhor1, ghver1] != ' ')
-                                map[ghhor1, ghver1] = '-';
+                            if (onstar1==false)
+                                map[ghhor1, ghver1] = ' ';
+                            else
+                                map[ghhor1, ghver1] = '*';
+                            if (map[ghhor1 + 1, ghver1] == '*')
+                                onstar1 = true;
+                            else
+                                onstar1 = false;
                             map[ghhor1 + 1, ghver1] = '@';
                             ghhor1++;
                         }
@@ -142,8 +166,14 @@ namespace pacman
                         {
                             if (map[ghhor1, ghver1 + 1] == 'O')
                                 user.kill();
-                            if (map[ghhor1, ghver1] != 'O' && map[ghhor1, ghver1] != ' ')
-                                map[ghhor1, ghver1] = '-';
+                            if (onstar1 == false)
+                                map[ghhor1, ghver1] = ' ';
+                            else
+                                map[ghhor1, ghver1] = '*';
+                            if (map[ghhor1, ghver1 + 1] == '*')
+                                onstar1 = true;
+                            else
+                                onstar1 = false;
                             map[ghhor1, ghver1 + 1] = '@';
                             ghver1++;
                         }
@@ -154,8 +184,14 @@ namespace pacman
                         {
                             if (map[ghhor1, ghver1 -1] == 'O')
                                 user.kill();
-                            if (map[ghhor1, ghver1] != 'O' && map[ghhor1, ghver1] != ' ')
-                                map[ghhor1, ghver1] = '-';
+                            if (onstar1==false)
+                                map[ghhor1, ghver1] = ' ';
+                            else
+                                map[ghhor1, ghver1] = '*';
+                            if (map[ghhor1, ghver1 - 1] == '*')
+                                onstar1 = true;
+                            else
+                                onstar1 = false;
                             map[ghhor1, ghver1 - 1] = '@';
                             ghver1--;
                         }
@@ -170,8 +206,14 @@ namespace pacman
                         {
                             if (map[ghhor2 - 1, ghver2] == 'O')
                                 user.kill();
-                            if (map[ghhor2, ghver2] != 'O' && map[ghhor2, ghver2] != ' ')
-                                map[ghhor2, ghver2] = '-';
+                            if (onstar2 == false)
+                                map[ghhor2, ghver2] = ' ';
+                            else
+                                map[ghhor2, ghver2] = '*';
+                            if (map[ghhor2 - 1, ghver2] == '*')
+                                onstar2 = true;
+                            else
+                                onstar2 = false;
                             map[ghhor2 - 1, ghver2] = '@';
                             ghhor2--;
                         }
@@ -182,8 +224,14 @@ namespace pacman
                         {
                             if (map[ghhor2 + 1, ghver2] == 'O')
                                 user.kill();
-                            if (map[ghhor2, ghver2] != 'O' && map[ghhor2, ghver2] != ' ')
-                                map[ghhor2, ghver2] = '-';
+                            if (onstar2 == false)
+                                map[ghhor2, ghver2] = ' ';
+                            else
+                                map[ghhor2, ghver2] = '*';
+                            if (map[ghhor2 + 1, ghver2] == '*')
+                                onstar2 = true;
+                            else
+                                onstar2 = false;
                             map[ghhor2 + 1, ghver2] = '@';
                             ghhor2++;
                         }
@@ -194,8 +242,14 @@ namespace pacman
                         {
                             if (map[ghhor2, ghver2 + 1] == 'O')
                                 user.kill();
-                            if (map[ghhor2, ghver2] != 'O' && map[ghhor2, ghver2] != ' ')
-                                map[ghhor2, ghver2] = '-';
+                            if (onstar2 == false)
+                                map[ghhor2, ghver2] = ' ';
+                            else
+                                map[ghhor2, ghver2] = '*';
+                            if (map[ghhor2, ghver2 + 1] == '*')
+                                onstar2 = true;
+                            else
+                                onstar2 = false;
                             map[ghhor2, ghver2 + 1] = '@';
                             ghver2++;
                         }
@@ -206,8 +260,14 @@ namespace pacman
                         {
                             if (map[ghhor2, ghver2 - 1] == 'O')
                                 user.kill();
-                            if (map[ghhor2, ghver2] != 'O' && map[ghhor2, ghver2] != ' ')
-                                map[ghhor2, ghver2] = '-';
+                            if (onstar2 == false)
+                                map[ghhor2, ghver2] = ' ';
+                            else
+                                map[ghhor2, ghver2] = '*';
+                            if (map[ghhor2, ghver2 - 1] == '*')
+                                onstar2 = true;
+                            else
+                                onstar2 = false;
                             map[ghhor2, ghver2 - 1] = '@';
                             ghver2--;
                         }
@@ -222,8 +282,14 @@ namespace pacman
                         {
                             if (map[ghhor3 - 1, ghver3] == 'O')
                                 user.kill();
-                            if (map[ghhor3, ghver3] != 'O' && map[ghhor3, ghver3] != ' ')
-                                map[ghhor3, ghver3] = '-';
+                            if (onstar3 == false)
+                                map[ghhor3, ghver3] = ' ';
+                            else
+                                map[ghhor3, ghver3] = '*';
+                            if (map[ghhor3 - 1, ghver3] == '*')
+                                onstar3 = true;
+                            else
+                                onstar3 = false;
                             map[ghhor3 - 1, ghver3] = '@';
                             ghhor3--;
                         }
@@ -234,8 +300,14 @@ namespace pacman
                         {
                             if (map[ghhor3 + 1, ghver3] == 'O')
                                 user.kill();
-                            if (map[ghhor3, ghver3] != 'O' && map[ghhor3, ghver3] != ' ')
-                                map[ghhor3, ghver3] = '-';
+                            if (onstar3 == false)
+                                map[ghhor3, ghver3] = ' ';
+                            else
+                                map[ghhor3, ghver3] = '*';
+                            if (map[ghhor3 + 1, ghver3] == '*')
+                                onstar3 = true;
+                            else
+                                onstar3 = false;
                             map[ghhor3 + 1, ghver3] = '@';
                             ghhor3++;
                         }
@@ -246,8 +318,14 @@ namespace pacman
                         {
                             if (map[ghhor3, ghver3 + 1] == 'O')
                                 user.kill();
-                            if (map[ghhor3, ghver3] != 'O' && map[ghhor3, ghver3] != ' ')
-                                map[ghhor3, ghver3] = '-';
+                            if (onstar3 == false)
+                                map[ghhor3, ghver3] = ' ';
+                            else
+                                map[ghhor3, ghver3] = '*';
+                            if (map[ghhor3, ghver3 + 1] == '*')
+                                onstar3 = true;
+                            else
+                                onstar3 = false;
                             map[ghhor3, ghver3 + 1] = '@';
                             ghver3++;
                         }
@@ -258,8 +336,14 @@ namespace pacman
                         {
                             if (map[ghhor3, ghver3 - 1] == 'O')
                                 user.kill();
-                            if (map[ghhor3, ghver3] != 'O' && map[ghhor3, ghver3] != ' ')
-                                map[ghhor3, ghver3] = '-';
+                            if (onstar3 == false)
+                                map[ghhor3, ghver3] = ' ';
+                            else
+                                map[ghhor3, ghver3] = '*';
+                            if (map[ghhor3, ghver3 - 1] == '*')
+                                onstar3 = true;
+                            else
+                                onstar3 = false;
                             map[ghhor3, ghver3 - 1] = '@';
                             ghver3--;
                         }
@@ -274,8 +358,14 @@ namespace pacman
                         {
                             if (map[ghhor4 - 1, ghver4] == 'O')
                                 user.kill();
-                            if (map[ghhor4, ghver4] != 'O' && map[ghhor4, ghver4] != ' ')
-                                map[ghhor4, ghver4] = '-';
+                            if (onstar4 == false)
+                                map[ghhor4, ghver4] = ' ';
+                            else
+                                map[ghhor4, ghver4] = '*';
+                            if (map[ghhor4 - 1, ghver4] == '*')
+                                onstar4 = true;
+                            else
+                                onstar4 = false;
                             map[ghhor4 - 1, ghver4] = '@';
                             ghhor4--;
                         }
@@ -286,8 +376,14 @@ namespace pacman
                         {
                             if (map[ghhor4 + 1, ghver4] == 'O')
                                 user.kill();
-                            if (map[ghhor4, ghver4] != 'O' && map[ghhor4, ghver4] != ' ')
-                                map[ghhor4, ghver4] = '-';
+                            if (onstar4 == false)
+                                map[ghhor4, ghver4] = ' ';
+                            else
+                                map[ghhor4, ghver4] = '*';
+                            if (map[ghhor4 + 1, ghver4] == '*')
+                                onstar4 = true;
+                            else
+                                onstar4 = false;
                             map[ghhor4 + 1, ghver4] = '@';
                             ghhor4++;
                         }
@@ -298,8 +394,14 @@ namespace pacman
                         {
                             if (map[ghhor4, ghver4 + 1] == 'O')
                                 user.kill();
-                            if (map[ghhor4, ghver4] != 'O' && map[ghhor4, ghver4] != ' ')
-                                map[ghhor4, ghver4] = '-';
+                            if (onstar4 == false)
+                                map[ghhor4, ghver4] = ' ';
+                            else
+                                map[ghhor4, ghver4] = '*';
+                            if (map[ghhor4, ghver4 + 1] == '*')
+                                onstar4 = true;
+                            else
+                                onstar4 = false;
                             map[ghhor4, ghver4 + 1] = '@';
                             ghver4++;
                         }
@@ -310,8 +412,14 @@ namespace pacman
                         {
                             if (map[ghhor4, ghver4 - 1] == 'O')
                                 user.kill();
-                            if (map[ghhor4, ghver4] != 'O' && map[ghhor4, ghver4] != ' ')
-                                map[ghhor4, ghver4] = '-';
+                            if (onstar4 == false)
+                                map[ghhor4, ghver4] = ' ';
+                            else
+                                map[ghhor4, ghver4] = '*';
+                            if (map[ghhor4, ghver4 - 1] == '*')
+                                onstar4 = true;
+                            else
+                                onstar4 = false;
                             map[ghhor4, ghver4 - 1] = '@';
                             ghver4--;
                         }
