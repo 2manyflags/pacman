@@ -8,7 +8,6 @@ namespace pacman
 {
     class Ghost3 : Entity
     {
-        char dir = 'W';
         Random rand;
         int direction;
         int health = 1;

@@ -8,11 +8,9 @@ namespace pacman
 {
     class Ghost2 : Entity
     {
-        char dir = 'W';
         Random rand;
         int direction;
         int health = 1;
-        char [,] fake = new char[20,30];
         public override char move()
         {
             rand = new Random();
